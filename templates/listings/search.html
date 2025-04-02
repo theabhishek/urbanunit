@@ -1,0 +1,399 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block title %}
+	- Search Results
+{% endblock title %}
+{% block content %}
+
+
+<br>
+<div class="container w3-hide-small">
+
+	
+	<div
+  href="#"
+  class="w3-hide-small w3-hide-large w3-hide-medium block overflow-hidden rounded-lg border border-indigo-100 p-4 sm:p-6 lg:p-8"
+>
+  <span
+    class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-indigo-800 via-indigo-600 to-indigo-700"
+  ></span>
+  <form action="{% url 'search' %}">
+	<div class="grid grid-cols-6 gap-4">
+		<div>
+		
+				<label class="sr-only">Keywords</label>
+				<input type="text" name="keywords" class="form-control"
+				placeholder="Keyword (pg, House with garden, etc)">
+			
+		</div>
+		<!-- ... -->
+		<div>
+			<label class="sr-only">City</label>
+						<input type="text" name="city" class="form-control" placeholder="City">
+		</div>
+		<div>
+			<label class="sr-only">State</label>
+						<select name="state" class="form-control">
+							<option selected="true" disabled="disabled">select </option>
+							{% for key,value in state_choices.items %}
+								<option value="{{ key }}">{{ value }}</option>
+							{% endfor %}
+						</select>
+		</div>
+		<!-- ... -->
+		<div>
+			<label class="sr-only">Bedrooms</label>
+						<select name="bedrooms" class="form-control">
+							<option selected="true" disabled="disabled">Bedrooms</option>
+							{% for key,value in bedroom_choices.items %}
+								<option value="{{ key }}">{{ value }}</option>
+							{% endfor %}
+						</select>
+		</div>
+		<div>
+			<select name="price" class="form-control">
+				<option selected="true" disabled="disabled">Price </option>
+				{% for key,value in price_choices.items %}
+					<option value="{{ key }}">{{ value }}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<!-- ... -->
+		<div><button class="inline-block rounded border border-indigo-600 bg-indigo-600 px-12 py-2 text-sm font-medium text-white  focus:outline-none focus:ring active:text-indigo-500" type="submit">Submit form</button></div>
+	  </div>
+	</form>
+</div>
+
+<!--small-->
+
+<br>
+
+
+
+<header>
+	<div class="mx-auto max-w-screen-xl px-12">
+	  <div class="sm:flex  sm:justify-between">
+	
+		  </button>
+		</div>
+	  </div>
+	
+  </header>
+
+
+	
+
+	<!-- Listings --><div class="overflow-hidden bg-white  gap-4">
+  <div class="mx-auto max-w-7xl px-8 lg:px-8  gap-4">
+
+	<section id="listings" class="py-4  justify-between  gap-4">
+		<div class="container  gap-4">
+			<div class="row  gap-4">
+				{% if listings %}
+					{% for listing in listings %}
+
+					{% load humanize %} <div class="block rounded-lg border border-gray-200 shadow-md overflow-hidden bg-white">
+						<a href="{% url 'listing' listing.id %}" class="block">
+							<img
+								alt="{{ listing.title }}"
+								src="{{ listing.photo_main.url }}"
+								class="h-56 w-full object-cover"
+							/>
+						</a>
+					
+						<div class="p-4 sm:p-6">
+							<div class="flex items-start justify-between mb-2">
+								<div>
+									<p class="text-lg sm:text-xl font-bold text-gray-900">
+										₹ {{ listing.price | intcomma }}
+									</p>
+									<h3 class="mt-1 text-base sm:text-lg font-medium text-gray-700 leading-tight">
+										{{ listing.title }}
+									</h3>
+									</div>
+								<span class="inline-block whitespace-nowrap rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-700 capitalize">
+									{{ listing.state }}
+								</span>
+							</div>
+					
+							<div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-600">
+								<div class="flex items-center gap-1">
+									<svg class="h-4 w-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+										<path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+									</svg>
+									<span class="font-medium">{{ listing.sqft }}</span> sqft
+								</div>
+					
+								<div class="flex items-center gap-1">
+									<svg class="h-4 w-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+									  <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /> <path stroke-linecap="round" stroke-linejoin="round" d="M12 11v3m-3-3v3m6-3v3M3 7l9 6 9-6" /> </svg>
+									<span class="font-medium">{{ listing.bedrooms }}</span> Beds
+								</div>
+					
+								<div class="flex items-center gap-1">
+									<svg class="h-4 w-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+										<path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75c-1.5 0-2.8.6-3.75 1.5M12 6.75c1.5 0 2.8.6 3.75 1.5m-7.5 1.5C3.6 9.15 3 10.35 3 11.7V17a2 2 0 002 2h14a2 2 0 002-2v-5.3c0-1.35-.6-2.55-1.5-3.45M12 12.75v6" /> </svg>
+									<span class="font-medium">{{ listing.bathrooms }}</span> Baths
+								</div>
+							</div>
+					
+							<a href="{% url 'listing' listing.id %}" class="block mt-6">
+								<button type="button" class="w-full text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800 transition duration-150 ease-in-out">
+									More Info
+								</button>
+							</a>
+						</div>
+					</div>
+
+
+
+
+					  <!--
+						<div class="col-md-6 col-lg-4 mb-4">
+							<div class="card listing-preview">
+								<img class="card-img-top" src="{{ listing.photo_main.url }}" alt="">
+								<div class="card-img-overlay">
+									<h2>
+									<span class="badge badge-secondary text-white">${{ listing.price | intcomma}}</span>
+									</h2>
+								</div>
+								<div class="card-body">
+									<div class="listing-heading text-center">
+										<h4 class="text-primary">{{ listing.title }}</h4>
+										<p>
+											<i class="fas fa-map-marker text-secondary"></i>
+										{{ listing.city }} {{listing.state}}, {{listing.zipcode}}</p>
+									</div>
+									<hr>
+									<div class="row py-2 text-secondary">
+										<div class="col-6">
+										<i class="fas fa-th-large"></i> Sqft: {{listing.sqft}}</div>
+										<div class="col-6">
+										<i class="fas fa-car"></i> Garage: {{ listing.garage }}</div>
+									</div>
+									<div class="row py-2 text-secondary">
+										<div class="col-6">
+										<i class="fas fa-bed"></i> Bedrooms: {{ listing.bedrooms }}</div>
+										<div class="col-6">
+										<i class="fas fa-bath"></i> Bathrooms: {{ listing.bathrooms }}</div>
+									</div>
+									<hr>
+									<div class="row py-2 text-secondary">
+										<div class="col-12">
+										<i class="fas fa-user"></i> {{ listing.realtor }}</div>
+									</div>
+									<div class="row text-secondary pb-2">
+										<div class="col-6">
+										<i class="fas fa-clock"></i> {{ listing.list_date | timesince }}</div>
+									</div>
+									<hr>
+									<a href="{% url 'listing' listing.id %}" class="btn btn-primary btn-block">More Info</a>
+								</div>
+							</div>
+						</div>
+					-->
+
+
+				{% endfor %}
+				{% else %}
+					<div class="col-md-12">
+						<p>No Listings Found</p>
+					</div>
+					<br>
+				{% endif %}
+			</div>
+		</div>
+	</section>
+
+	</div>
+	</div>
+</div>
+
+
+
+
+
+<!--small screent start-->
+
+
+
+
+
+<!--small-->
+<div class="w3-container w3-hide-large w3-hide-medium">
+<div
+href="#"
+class="w3-hide-large w3-hide-medium relative block overflow-hidden rounded-lg border border-indigo-100 p-4 sm:p-6 lg:p-8"
+>
+<span
+  class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-indigo-800 via-indigo-600 to-indigo-700"
+></span>
+<form action="{% url 'search' %}">
+  <div class="grid grid-cols-2 gap-2">
+	  <div>
+	  
+			  <label class="sr-only"><small>Keywords</small></label>
+			  <input type="text" name="keywords" class="form-control text-sm"
+			  placeholder="Keyword">
+		  
+	  </div>
+	  <!-- ... -->
+	  <div>
+		  <label class="sr-only"><small>City</small></label>
+					  <input type="text" name="city" class="form-control text-sm" placeholder="City">
+	  </div>
+	
+	  <!-- ... -->
+	
+	  <!-- ... -->
+	  <div><button class="rounded border border-indigo-600 bg-indigo-600 px-20 py-2 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500" type="submit">Submit </button></div>
+	</div>
+  </form>
+</div>
+<!--form-->
+
+
+	<!-- Listings --><div class="overflow-hidden bg-white">
+		<div class="mx-auto max-w-7xl  ">
+
+			<section id="listings" class="py-4 ">
+				<div class="container">
+					<div class="">
+						{% if listings %}
+							{% for listing in listings %}
+		
+		
+							<div class="px-1 block rounded-lg p-2 shadow-sm shadow-indigo-100">
+								<img
+								  alt="Home"
+								  src="{{ listing.photo_main.url }}"
+								  class="h-56 w-full rounded-md object-cover"
+								/>
+							  
+								<div class="mt-2 p-3">
+		
+								  
+								  <!--hello-->
+								  <div class="flex items-center justify-between">
+									<span class="">
+										<dl>
+											<div>
+											  <dt class="sr-only">Price</dt>
+									  
+											  <dd class="text-sm text-gray-500">₹ {{ listing.price | intcomma}}</dd>
+				
+											  <text class="text-left">
+												  
+											  </text>
+											</div>
+									  
+											<div>
+											  <dt class="sr-only">Address</dt>
+									  
+											  <dd class="font-medium">{{listing.title}}</dd>
+											</div>
+										  </dl>
+									</span>
+									<div  class=" bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300  font-medium text-orange-600">
+										{{listing.state}}
+									</div>
+								</div>
+							  
+								  <div class="mt-6 flex items-center gap-8 text-xs">
+									<div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
+									  <svg
+										class="h-4 w-4 text-indigo-700"
+										xmlns="http://www.w3.org/2000/svg"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke="currentColor"
+									  >
+										<path
+										  stroke-linecap="round"
+										  stroke-linejoin="round"
+										  stroke-width="2"
+										  d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"
+										/>
+									  </svg>
+							  
+									  <div class="mt-1.5 sm:mt-0">
+										<p class="text-gray-500">Sqft:</p>
+							  
+										<p class="font-medium"> {{listing.sqft}}</p>
+									  </div>
+									</div>
+							  
+									<div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
+									  <svg
+										class="h-4 w-4 text-indigo-700"
+										xmlns="http://www.w3.org/2000/svg"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke="currentColor"
+									  >
+										<path
+										  stroke-linecap="round"
+										  stroke-linejoin="round"
+										  stroke-width="2"
+										  d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+										/>
+									  </svg>
+							  
+									  <div class="mt-1.5 sm:mt-0">
+										<p class="text-gray-500">Bathroom</p>
+							  
+										<p class="font-medium">{{ listing.bathrooms }}</p>
+									  </div>
+									</div>
+							  
+									<div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
+									  <svg
+										class="h-4 w-4 text-indigo-700"
+										xmlns="http://www.w3.org/2000/svg"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke="currentColor"
+									  >
+										<path
+										  stroke-linecap="round"
+										  stroke-linejoin="round"
+										  stroke-width="2"
+										  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+										/>
+									  </svg>
+							  
+									  <div class="mt-1.5 sm:mt-0">
+										<p class="text-gray-500">Bedroom</p>
+							  
+										<p class="font-medium">{{ listing.bedrooms }}</p>
+									  </div>
+									  
+									
+									  
+									</div>
+									
+								  </div>
+								  <a href="{% url 'listing' listing.id %}">
+									<button type="button" class="mt-3 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2 text-center me-2 mb-2">More Info</button>
+									 </a>
+								</div>
+							</div>
+		
+		
+		
+		
+						{% endfor %}
+						{% else %}
+							<div class="col-md-12">
+								<p>No Listings Found</p>
+							</div>
+							<br>
+						{% endif %}
+					</div>
+				</div>
+			</section>
+		
+			</div>
+			</div>
+</div>
+{% endblock content %}

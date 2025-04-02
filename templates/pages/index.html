@@ -1,0 +1,2245 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block title %}
+	- Welcome
+{% endblock title %}
+{% block content %}
+
+<!--
+  Heads up! 👋
+
+  This component comes with some `rtl` classes. Please remove them if they are not needed in your project.
+-->
+<div class="bg-white">
+	
+  
+	<div class="relative isolate px-6 pt-2 lg:px-2">
+	  <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
+		<div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+	  </div>
+	  <div class="mx-auto max-w-2xl py-9 sm:py-48 lg:py-8">
+		<div class="hidden sm:mb-8 sm:flex sm:justify-center">
+		  <div class="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+			Discover Comprehensive Property Management Solutions <a href="#" class="font-semibold text-indigo-600"><span class="absolute inset-0" aria-hidden="true"></span>Read more <span aria-hidden="true">&rarr;</span></a>
+		  </div>
+		</div>
+		<div class="">
+		  <h1 class="text-center text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+			Your Trusted Real Estate  Marketplace</h1>
+		  <p class=" text-center mt-6 text-lg leading-8 text-gray-600">
+			Find Your Dream Home with Confidence</p>
+		 
+		  <p class="  mt-6 text-lg leading-8 text-gray-600">
+			<div class="py-2 ">
+			<span class="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-sm text-purple-700">
+				# 1BHK Room  #
+			  </span>
+			  <span class="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-sm text-purple-700">
+				#sectore 62
+			  </span>
+			</div>
+	
+
+<form action="{% url 'search' %}" class="space-y-4">
+
+    <div>
+        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"></label>
+        {# This container will hold the state buttons and allow them to wrap #}
+        <div class="flex flex-wrap gap-2"> 
+            {% for key, value in state_choices.items %}
+                <div> {# Wrapper for each radio/label pair #}
+                    {# Hidden actual radio button - uses 'peer' for state detection #}
+                    <input type="radio" 
+                           id="state-{{ key }}" 
+                           name="state" 
+                           value="{{ key }}"
+                           class="sr-only peer" {# Hide the radio, make it a peer #}
+                           {% if key == values.state %}checked{% endif %} {# Check if this state was previously selected #}
+                           required {# Make state selection required if needed #}
+                           > 
+                    
+                    {# Label styled as a button, linked to the radio button #}
+                    <label for="state-{{ key }}" 
+                           class="inline-block px-4 py-2 border rounded-lg cursor-pointer text-sm font-medium
+                                  text-gray-700 bg-indigo-50 border-red-300 hover:bg-indigo-50 hover:text-white-900 
+                                  dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-indigo-800 dark:hover:text-indigo-600
+                                  peer-checked:bg-blue-600 peer-checked:text-white peer-checked:border-blue-600 
+                                  dark:peer-checked:bg-blue-500 dark:peer-checked:border-blue-500
+                                  transition-colors duration-150 ease-in-out">
+                        {{ value }} {# Display the full state name #}
+                    </label>
+                </div>
+            {% empty %}
+                <p class="text-gray-500 dark:text-gray-400">No states available.</p>
+            {% endfor %}
+        </div>
+         {# Add hidden input to ensure 'state' is always submitted, even if no button is required/selected initially #}
+         {# Remove 'required' from radios above if using this and selection isn't mandatory #}
+         {# <input type="hidden" name="state" value="{{ values.state|default:'' }}"> #}
+         {# Note: Using hidden input like this might override radio selection if not careful. The radio approach is generally better if a state MUST be selected. #}
+    </div>
+
+    <div>
+        <label for="city-search-statebtns" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"></label>
+        <div class="relative">
+            <input type="search"
+                   id="city-search-statebtns"
+                   name="city"
+                   value="{{ values.city }}"
+                   class="block w-full p-2.5 pr-12 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500"
+                   placeholder="Enter city name..."
+                   required>
+            <button type="submit" class="text-white absolute end-1.5 bottom-1.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Search
+            </button>
+        </div>
+    </div>
+
+</form>
+
+
+		</p>
+		<div class="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-8 pt-4 w3-hide-small w3-hide-large w3-hide-medium">
+			<div class="h-32 rounded-lg ">
+				<article class="rounded-xl border border-gray-700  bg-gradient-to-r from-indigo-600 from-10% via-sky-600 via-30% to-emerald-600 to-90% .  p-4">
+					<div class="grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-2">
+						<div class=" rounded-lg ">
+							<h1 class="text-2xl font-bold text-white sm:text-3xl">Rent <br> In Noida</h1>
+						</div>
+						<div class=" rounded-lg text-center ">
+						
+                          <img class=" max-w-lg rounded-lg" src="https://i.postimg.cc/T1wPv6Qg/output-onlinegiftools.gif" alt="image description">
+
+						</div>
+					  </div>
+					
+				  </article>
+			</div>
+			<div class="h-32 rounded-lg ">
+				<div class="h-32 rounded-lg ">
+					<article class="rounded-xl border border-gray-700 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 ... p-4">
+						<div class="grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-2">
+							<div class=" rounded-lg ">
+								<h1 class="text-2xl font-bold text-white sm:text-3xl">Buy <br> In Noida</h1>
+							</div>
+							<div class=" rounded-lg text-center ">
+						
+								<img class=" max-w-lg rounded-lg" src="https://i.postimg.cc/fTmDJCy6/output-onlinegiftools-2.gif" alt="image description">
+								
+														</div>
+						  </div>
+					  
+			
+					  </article>
+				</div>
+			</div>
+		  </div>
+		<!--smalldcreen -->
+
+		
+
+
+
+
+
+
+
+
+
+
+
+<!--newone 27-01-->
+
+
+
+<!--large-->
+<div id="carouselExampleControls" class="carousel slide py-12 w3-hide-small" data-ride="carousel">
+	<div class="carousel-inner">
+	  <div class="carousel-item active">
+		<div class="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8">
+			<div class="h-32 rounded-lg ">	
+				<a href="/listings/search?state=&city=noida" class="block">
+				<img
+				  alt="Signage"
+				  src="https://i.postimg.cc/GmHXz7Lr/rent-in-noida-11.png"
+				  class="h-32 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+				/>
+			  
+				
+			  </a></div>
+			<div class="h-32 rounded-lg">
+				<a  onclick="document.getElementById('id01').style.display='block'"  class="block">
+					<img
+					  alt="Signage"
+					  src="https://i.postimg.cc/PJK1mrFG/rent-in-noida-26.png"
+					  class="h-32 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+					/>
+				  
+					
+				  </a>
+			</div>
+			<div class="h-32 rounded-lg ">
+				<a href="/listings/search?state=rent&city=noida" class="block">
+					<img
+					  alt="Signage"
+					  src="https://i.postimg.cc/xdHxLMvW/rent-in-noida-31.png"
+					  class="h-32 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+					/>
+				  
+					
+				  </a>
+			</div>
+			<div class="h-32 rounded-lg ">
+				<a href="/listings/search?state=rent&city=noida" class="block">
+					<img
+					  alt="Signage"
+					  src="https://i.postimg.cc/tJfWrmyD/rent-in-noida-33.png"
+					  class="h-32 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+					/>
+				  
+					
+				  </a>
+			</div>
+			
+		  </div>
+	
+	  </div>
+<!--  delhi /grurgram
+	  <div class="carousel-item">
+		<div class="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8">
+			<div class="h-32 rounded-lg ">	<a href="/listings/search?state=rent&city=noida" class="block">
+				<img
+				  alt="Signage"
+				  src="https://i.postimg.cc/7hNqsPNC/rent-in-noida-20.png"
+				  class="h-32 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+				/>
+			  
+				
+			  </a></div>
+			<div class="h-32 rounded-lg">
+				<a href="/listings/search?state=rent&city=noida" class="block">
+					<img
+					  alt="Signage"
+					  src="https://i.postimg.cc/RZfCJpY9/rent-in-noida-28.png"
+					  class="h-32 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+					/>
+				  
+					
+				  </a>
+			</div>
+			<div class="h-32 rounded-lg ">
+				<a href="/listings/search?state=rent&city=noida" class="block">
+					<img
+					  alt="Signage"
+					  src="https://i.postimg.cc/hjXNHDby/rent-in-noida-29.png"
+					  class="h-32 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+					/>
+				  
+					
+				  </a>
+			</div>
+			<div class="h-32 rounded-lg ">
+				<a href="/listings/search?state=rent&city=noida" class="block">
+					<img
+					  alt="Signage"
+					  src="https://i.postimg.cc/ZKtXMh9H/rent-in-noida-35.png"
+					  class="h-32 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+					/>
+				  
+					
+				  </a>
+			</div>
+			
+		  </div>
+	  </div>
+	
+	  <div class="carousel-item">
+		<div class="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8">
+			<div class="h-32 rounded-lg ">	<a href="/listings/search?state=rent&city=noida" class="block">
+				<img
+				  alt="Signage"
+				  src="https://i.postimg.cc/5005NjXJ/rent-in-noida-22.png"
+				  class="h-32 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+				/>
+			  
+				
+			  </a></div>
+			<div class="h-32 rounded-lg">
+				<a href="https://firstspace.in/listings/search?city=noida" class="block">
+					<img
+					  alt="Signage"
+					  src="https://i.postimg.cc/XYD8twHW/rent-in-noida-25.png"
+					  class="h-32 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+					/>
+				  
+					
+				  </a>
+			</div>
+			<div class="h-32 rounded-lg ">
+				<a href="/listings/search?state=rent&city=noida" class="block">
+					<img
+					  alt="Signage"
+					  src="https://i.postimg.cc/W37SWxxW/rent-in-noida-32.png"
+					  class="h-32 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+					/>
+				  
+					
+				  </a>
+			</div>
+			<div class="h-32 rounded-lg ">
+				<a href="/listings/search?state=rent&city=noida" class="block">
+					<img
+					  alt="Signage"
+					  src="https://i.postimg.cc/yY0yYD1q/rent-in-noida-36.png"
+					  class="h-32 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+					/>
+				  
+					
+				  </a>
+			</div>
+		  </div>
+	  </div>
+
+
+	<div class="carousel-item">
+		<div class="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8">
+			<div class="h-32 rounded-lg ">	<a href="/listings/search?state=rent&city=noida" class="block">
+				<img
+				  alt="Signage"
+				  src="https://i.postimg.cc/TY76p4NX/rent-in-noida-21.png"
+				  class="h-32 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+				/>
+			  
+				
+			  </a></div>
+			<div class="h-32 rounded-lg">
+				<a href="/listings/search?state=rent&city=noida" class="block">
+					<img
+					  alt="Signage"
+					  src="https://i.postimg.cc/6p8sCN0T/rent-in-noida-27.png"
+					  class="h-32 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+					/>
+				  
+					
+				  </a>
+			</div>
+			<div class="h-32 rounded-lg ">
+				<a href="/listings/search?state=rent&city=noida" class="block">
+					<img
+					  alt="Signage"
+					  src="https://i.postimg.cc/KzJQ91cb/rent-in-noida-30.png"
+					  class="h-32 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+					/>
+				  
+					
+				  </a>
+			</div>
+			<div class="h-32 rounded-lg ">
+				<a href="/listings/search?state=rent&city=noida" class="block">
+					<img
+					  alt="Signage"
+					  src="https://i.postimg.cc/PqHXsF6s/rent-in-noida-34.png"
+					  class="h-32 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+					/>
+				  
+					
+				  </a>
+			</div>
+		  </div>
+	  </div>
+	-->
+	</div>
+
+  </div>
+
+<!--modelNoida-->
+<div class="w3-container">
+	<div id="id01" class="w3-modal">
+	  <div class="w3-modal-content">
+	
+		 <div class="bg-gray-50 py-8">
+			<span onclick="document.getElementById('id01').style.display='none'" 
+			class="w3-button w3-display-topright">&times;</span>
+
+		
+			  <p class="mx-auto mt-2 max-w-lg text-center text-2xl font-semibold tracking-tight text-balance text-gray-950 sm:text-3xl">PG In Noida</p>
+	  <!--largescreen-->
+			  <div class="w3-hide-small">
+				<div class="mx-auto max-w-7xl px-6 lg:px-8">
+					<div class="relative min-h-20 w-full flex flex-col  my-6 bg-white shadow-sm border border-slate-200 rounded-lg p-2">
+						<div class="p-3">
+						 
+						  <div class="flex">
+						  </div>
+						  <p class="block text-slate-400 leading-normal font-light ">
+							<small> <span class="text-indigo-600">Nearest Landmark(office & college) </span>:- 
+								<span class="inline-flex items-center rounded-md bg-pink-50 px-2 py-1 text-xs font-medium text-pink-700 ring-1 ring-pink-700/10 ring-inset">JIIT</span>
+								<span class="inline-flex items-center rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-800 ring-1 ring-yellow-600/20 ring-inset">Avviare Educational Hub,</span>
+								<span class="inline-flex items-center rounded-md bg-pink-50 px-2 py-1 text-xs font-medium text-pink-700 ring-1 ring-pink-700/10 ring-inset">A-31, Block A Industrial Area</span>
+								<span class="inline-flex items-center rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-800 ring-1 ring-yellow-600/20 ring-inset"> C Block, Near Sai Leela TV Channel Limited, </span>
+								<span class="inline-flex items-center rounded-md bg-pink-50 px-2 py-1 text-xs font-medium text-pink-700 ring-1 ring-pink-700/10 ring-inset">Logix Cyber Park</span> 
+								<span class="inline-flex items-center rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-800 ring-1 ring-yellow-600/20 ring-inset">Galaxy Business Park, D Block,</span>
+								<span class="inline-flex items-center rounded-md bg-pink-50 px-2 py-1 text-xs font-medium text-pink-700 ring-1 ring-pink-700/10 ring-inset">Haldiram's Office Sector 63,</span>
+								<span class="inline-flex items-center rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-800 ring-1 ring-yellow-600/20 ring-inset">Sector 63</span></small>
+						  </p>
+						  <div class="py-4 grid grid-cols-5 gap-4">
+							<div>
+								<img class="h-34 w-74 object-fill ..." src="https://iili.io/3AYK0Kl.png" />
+							</div>
+						
+							<div>
+								<img class="h-34 w-74 object-fill ..." src="https://iili.io/3AYqlvS.png" />
+							</div>
+							<div></div>
+						
+							<div></div>
+						  </div>
+						
+						</div>
+					  </div>
+				 
+				</div>
+			  </div> 
+	   <!--largescreeenend-->
+	   <!--smallscreen-->
+	   <div class="w3-hide-large w3-hide-medium">
+		<div class="mx-auto max-w-7xl px-6 lg:px-8">
+			<div class="relative min-h-20 w-full flex flex-col  my-6 bg-white shadow-sm border border-slate-200 rounded-lg p-2">
+				<div class="p-3">
+				 
+				  <div class="flex">
+				  </div>
+				  <p class="block text-slate-400 leading-normal font-light ">
+					<small> <span class="text-indigo-600">Nearest Landmark(office & college) </span>:- 
+						<span class="inline-flex items-center rounded-md bg-pink-50 px-2 py-1 text-xs text-pink-700 ring-1 ring-pink-700/10 ring-inset">JIIT,</span>
+						<span class="inline-flex items-center rounded-md bg-yellow-50 px-2 py-1 text-xs text-yellow-800 ring-1 ring-yellow-600/20 ring-inset">Avviare Educational Hub,</span>
+						<span class="inline-flex items-center rounded-md bg-pink-50 px-2 py-1 text-xs  text-pink-700 ring-1 ring-pink-700/10 ring-inset">Logix Cyber Park,other</span>
+						<span class="inline-flex items-center rounded-md bg-yellow-50 px-2 py-1 text-xs  text-yellow-800 ring-1 ring-yellow-600/20 ring-inset">Galaxy Business Park</span></small>
+					</small>
+					</p>
+				  <div class="py-4 grid grid-cols-3 gap-4">
+					<div>
+						<img class="h-34 w-74 object-fill ..." src="https://iili.io/3AYK0Kl.png" />
+					</div>
+				
+					<div>
+						<img class="h-34 w-74 object-fill ..." src="https://iili.io/3AYqlvS.png" />
+					</div>
+					<div></div>
+				
+					<div></div>
+				  </div>
+				
+				</div>
+			  </div>
+		 
+		</div>
+	  </div> 
+
+	   <!--smalllscreenend -->
+	
+		  </div>
+	  </div>
+	</div>
+  </div>
+
+<!--model-->
+
+
+	<!--new added -->
+
+	<div id="carouselExampleControls" class="carousel slide mt-4 w3-hide-large w3-hide-medium" data-ride="carousel">
+		<div class="carousel-inner">
+		  <div class="carousel-item active">
+			<div class="w3-col s3  w3-center px-1"><p>
+				<a href="/listings/search?state=rent&city=noida" class="block">
+					<img
+					  alt="Signage"
+					  src="https://i.postimg.cc/GmHXz7Lr/rent-in-noida-11.png"
+					  class="h-30 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+					/>
+				  </a>
+			</p></div>
+				<div class="w3-col s3  w3-center px-1"><a href="https://firstspace.in/listings/search?state=PG&city=noida" class="block">
+					<img
+					  alt="Signage"
+					  src="https://i.postimg.cc/PJK1mrFG/rent-in-noida-26.png"
+					  class="h-30 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+					/>
+				  
+					
+				  </a></div>
+				<div class="w3-col s3  w3-center px-1"><p>
+					<a href="/listings/search?state=rent&city=noida" class="block">
+						<img
+						  alt="Signage"
+						  src="https://i.postimg.cc/xdHxLMvW/rent-in-noida-31.png"
+						  class="h-30 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+						/>
+					  
+						
+					  </a>
+				</p></div>
+				<div class="w3-col s3  w3-center px-1"><p>
+						<a href="/listings/search?state=rent&city=noida" class="block">
+					<img
+					  alt="Signage"
+					  src="https://i.postimg.cc/tJfWrmyD/rent-in-noida-33.png"
+					  class="h-30 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+					/>					
+				  </a>
+				</p></div>
+		  </div>
+		  <!--
+		  <div class="carousel-item">
+			<div class="w3-col s3  w3-center px-1"><p>
+				<a href="/listings/search?state=rent&city=noida" class="block">
+					<img
+					  alt="Signage"
+					  src="https://i.postimg.cc/7hNqsPNC/rent-in-noida-20.png"
+					  class="h-30 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+					/>
+				  </a>
+			</p></div>
+				<div class="w3-col s3  w3-center px-1"><a href="/listings/search?state=rent&city=noida" class="block">
+					<img
+					  alt="Signage"
+					  src="https://i.postimg.cc/RZfCJpY9/rent-in-noida-28.png"
+					  class="h-30 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+					/>
+				  
+					
+				  </a></div>
+				<div class="w3-col s3  w3-center px-1"><p>
+					<a href="/listings/search?state=rent&city=noida" class="block">
+						<img
+						  alt="Signage"
+						  src="https://i.postimg.cc/hjXNHDby/rent-in-noida-29.png"
+						  class="h-30 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+						/>
+					  
+						
+					  </a>
+				</p></div>
+				<div class="w3-col s3  w3-center px-1"><p>
+						<a href="/listings/search?state=rent&city=noida" class="block">
+					<img
+					  alt="Signage"
+					  src="https://i.postimg.cc/RFj5KhYV/rent-in-noida-35.png"
+					  class="h-30 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+					/>					
+				  </a>
+				</p></div>
+		  </div>
+		  <div class="carousel-item">
+			<div class="w3-col s3  w3-center px-1"><p>
+				<a href="/listings/search?state=rent&city=noida" class="block">
+					<img
+					  alt="Signage"
+					  src="https://i.postimg.cc/5005NjXJ/rent-in-noida-22.png"
+					  class="h-30 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+					/>
+				  </a>
+			</p></div>
+				<div class="w3-col s3  w3-center px-1"><a href="/listings/search?state=rent&city=noida" class="block">
+					<img
+					  alt="Signage"
+					  src="https://i.postimg.cc/XYD8twHW/rent-in-noida-25.png"
+					  class="h-30 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+					/>
+				  
+					
+				  </a></div>
+				<div class="w3-col s3  w3-center px-1"><p>
+					<a href="/listings/search?state=rent&city=noida" class="block">
+						<img
+						  alt="Signage"
+						  src="https://i.postimg.cc/W37SWxxW/rent-in-noida-32.png"
+						  class="h-30 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+						/>
+					  
+						
+					  </a>
+				</p></div>
+				<div class="w3-col s3  w3-center px-1"><p>
+						<a href="/listings/search?state=rent&city=noida" class="block">
+					<img
+					  alt="Signage"
+					  src="https://i.postimg.cc/yY0yYD1q/rent-in-noida-36.png"
+					  class="h-30 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+					/>					
+				  </a>
+				</p></div>
+		  </div>
+	
+		  <div class="carousel-item">
+			<div class="w3-col s3  w3-center px-1"><p>
+				<a href="/listings/search?state=rent&city=noida" class="block">
+					<img
+					  alt="Signage"
+					  src="https://i.postimg.cc/TY76p4NX/rent-in-noida-21.png"
+					  class="h-30 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+					/>
+				  </a>
+			</p></div>
+				<div class="w3-col s3  w3-center px-1"><a href="/listings/search?state=rent&city=noida" class="block">
+					<img
+					  alt="Signage"
+					  src="https://i.postimg.cc/6p8sCN0T/rent-in-noida-27.png"
+					  class="h-30 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+					/>
+				  
+					
+				  </a></div>
+				<div class="w3-col s3  w3-center px-1"><p>
+					<a href="/listings/search?state=rent&city=noida" class="block">
+						<img
+						  alt="Signage"
+						  src="https://i.postimg.cc/KzJQ91cb/rent-in-noida-30.png"
+						  class="h-30 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+						/>
+					  
+						
+					  </a>
+				</p></div>
+				<div class="w3-col s3  w3-center px-1"><p>
+						<a href="/listings/search?state=rent&city=noida" class="block">
+					<img
+					  alt="Signage"
+					  src="https://i.postimg.cc/PqHXsF6s/rent-in-noida-34.pngg"
+					  class="h-30 w-full rounded-bl-3xl rounded-tr-3xl object-cover "
+					/>					
+				  </a>
+				</p></div>
+		  </div>
+         	-->
+		</div>
+	  </div>
+
+
+
+
+
+
+
+
+
+
+	
+	<!--small screen added new -->
+
+</div>	
+  </div>
+  
+
+<!--
+	<section id="showcase">
+		<div class="container text-center">
+			<div class="home-search p-5">
+				<div class="overlay p-5">
+					<h1 class="display-4 mb-4">
+					Discover Your New Home
+					</h1>
+					<p class="lead">It's so simple to find the best real estate deals in your area. It's one easy search!</p>
+					<div class="search">
+						<form action="{% url 'search' %}">
+						
+							<div class="form-row">
+								<div class="col-md-12 mb-3">
+									<label class="sr-only">Keywords</label>
+									<input type="text" name="keywords" class="form-control"
+									placeholder="Keyword (Taller Ceilings, House with garden, etc)"
+									value="{{ values.keywords }}">
+								</div>
+							</div>
+							<div class="form-row">
+							
+								<div class="col-md-6 mb-3">
+									<label class="sr-only">State</label>
+									<select name="state" class="form-control">
+										<option selected="true" disabled="disabled">State</option>
+										{% for key,value in state_choices.items %}
+											<option value="{{ key }}"
+												{% if key == values.state %}
+													selected
+												{% endif %}
+											>{{ value }}</option>
+										{% endfor %}
+									</select>
+								</div>
+								<div class="col-md-6 mb-3">
+									<label class="sr-only">Bedrooms</label>
+									<select name="bedrooms" class="form-control">
+										<option selected="true" disabled="disabled">Bedrooms</option>
+										{% for key,value in bedroom_choices.items %}
+											<option value="{{ key }}"
+												{% if key == values.bedrooms %}
+													selected
+												{% endif %}
+											>{{ value }}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+							<div class="form-row">
+							
+								<div class="col-md-12 mb-3">
+									<label class="sr-only">City</label>
+									<input type="text" name="city" class="form-control" placeholder="City"
+									value="{{ values.city }}">
+								</div>
+							</div>
+						
+							<div class="form-row">
+								<div class="col-md-12 mb-3">
+									<select name="price" class="form-control" id="type">
+										<option selected="true" disabled="disabled">Price</option>
+										{% for key,value in price_choices.items %}
+											<option value="{{ key }}"
+												{% if key == values.price %}
+													selected
+												{% endif %}
+											>{{ value }}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+							<button class="btn btn-secondary btn-block mt-4" type="submit">Submit form</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<br>
+	{% include 'partials/_alerts.html' %}
+	
+	<section id="listings" class="py-5">
+		<div class="container">
+			<div class="row">
+				{% if listings %}
+					{% for listing in listings %}
+						
+						<div class="col-md-6 col-lg-4 mb-4">
+							<div class="card listing-preview">
+								<img class="card-img-top" src="{{ listing.photo_main.url }}" alt="">
+								<div class="card-img-overlay">
+									<h2>
+									<span class="badge badge-secondary text-white">${{ listing.price | intcomma }}</span>
+									</h2>
+								</div>
+								<div class="card-body">
+									<div class="listing-heading text-center">
+										<h4 class="text-primary">{{ listing.title }}</h4>
+										<p>
+											<i class="fas fa-map-marker text-secondary"></i>
+										{{listing.city}} {{listing.state}}, {{listing.zipcode}}</p>
+									</div>
+									<hr>
+										<div class="row py-2 text-secondary">
+											<div class="col-6">
+												<i class="fas fa-th-large"></i> Sqft: {{listing.sqft}}</div>
+											<div class="col-6">
+												<i class="fas fa-car"></i> Garage: {{listing.garage}}
+											</div>
+										</div>
+
+									<div class="row py-2 text-secondary">
+										<div class="col-6">
+										<i class="fas fa-bed"></i> Bedrooms: {{listing.bedrooms}}</div>
+										<div class="col-6">
+										<i class="fas fa-bath"></i> Bathrooms: {{listing.bathrooms}}</div>
+									</div>
+									<hr>
+									<div class="row py-2 text-secondary">
+										<div class="col-6">
+										<i class="fas fa-user"></i> {{ listing.realtor }}</div>
+									</div>
+									<div class="row text-secondary pb-2">
+										<div class="col-12">
+										<i class="fas fa-clock"></i> {{ listing.list_date | timesince }}</div>
+									</div>
+									<hr>
+									<a href="{% url 'listing' listing.id %}" class="btn btn-primary btn-block"> Details </a>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				{% else %}
+					<div class="col-md-12">
+						<p>No Listings Available</p>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</section>
+
+
+-->
+
+
+
+
+
+
+
+<!--new added in 16-02 for accordmatiomn-->
+<div class="bg-white py-2 w3-hide-small">
+	<div class="mx-auto max-w-7xl px-6 lg:px-8">
+	  <div class="mx-auto max-w-2xl lg:text-center py-2 ">
+	
+		<p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">We streamline lodging options for various needs, including:</p>
+		<p class="mt-4 text-md leading-8 text-blue-600">Book accommodations for bachelors, office employees, and students near universities and offices</p>
+	 
+	<!--grid-->
+	
+	
+	</div>
+
+	<div class="mt-5 grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8">
+		<div class="h-32 rounded-lg bg-gray-200">
+			<article class="flex bg-white transition hover:shadow-xl">
+				<div class="rotate-180 p-2 [writing-mode:_vertical-lr]">
+				  <time
+					datetime="2022-10-10"
+					class="flex items-center justify-between gap-4 text-xs font-bold uppercase text-gray-900"
+				  >
+					<span>Start At</span>
+					<span class="w-px flex-1 bg-gray-900/10"></span>
+					<span class="w3-hide-large w3-hide-medium w3-hide-small">₹6000</span>
+				  </time>
+				</div>
+			  
+				<div class="hidden sm:block sm:basis-40">
+				  <img
+					alt=""
+					src="https://i.postimg.cc/NjkRwLW2/tumblr-2f1ddea71e3e5dc5afeb8918d18e00d6-9f8f4cb0-1280.gif"
+					class="aspect-square h-full w-full object-cover"
+				  />
+				</div>
+			  
+				<div class="flex flex-1 flex-col justify-between">
+				  <div class="border-s border-gray-900/10 p-4 sm:border-l-transparent sm:p-6">
+					<span class="text-sm text-red-500">₹6000</span>
+					<a href="#">
+					  <h1 class="font-bold uppercase text-gray-900">
+						Family
+					  </h1>
+					</a>
+			  
+					<p class="mb-2 mt-2 line-clamp-3 text-sm/relaxed text-gray-700">
+						1RK, 1BHK, 2BHK, 3BHK, villas, flats, and apartments.
+					</p>
+				  </div>
+			  
+		
+				</div>
+			  </article>
+		</div>
+		<div class="h-32 rounded-lg bg-gray-200">
+			<article class="flex bg-white transition hover:shadow-xl">
+				<div class="rotate-180 p-2 [writing-mode:_vertical-lr] ">
+				  <time
+					datetime="2022-10-10"
+					class="flex items-center justify-between gap-4 text-xs font-bold uppercase text-gray-900"
+				  >
+					<span>Start At</span>
+					<span class="w-px flex-1 bg-gray-900/10"></span>
+					<span class="w3-hide-large w3-hide-medium w3-hide-small">5499</span>
+				  </time>
+				</div>
+			  
+				<div class="hidden sm:block sm:basis-40">
+				  <img
+					alt=""
+					src="https://i.postimg.cc/26XbTZgh/7df26fa959d20fa16bf8223205cd949b.gif"
+					class="aspect-square h-full w-full object-cover"
+				  />
+				</div>
+			  
+				<div class="flex flex-1 flex-col justify-between">
+				  <div class="border-s border-gray-900/10 p-4 sm:border-l-transparent sm:p-6">
+					<span class="text-sm text-red-500">₹ 5499</span>
+					<a href="#">
+					  <h3 class="font-bold uppercase text-gray-900">
+						Bachelor , Office Employee
+					  </h3>
+					</a>
+			  
+					<p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-700">
+						PG, hostel, 1RK, 1BHK, 2BHK, 3BHK, villas, flats, and co-living spaces. 
+					</p>
+				  </div>
+			  
+		
+				</div>
+			  </article>
+		</div>
+		<div class="h-32 rounded-lg bg-gray-200">
+			<article class="flex bg-white transition hover:shadow-xl">
+				<div class="rotate-180 p-2 [writing-mode:_vertical-lr]">
+				  <time
+					datetime="2022-10-10"
+					class="flex items-center justify-between gap-4 text-xs font-bold uppercase text-gray-900"
+				  >
+					<span>start at</span>
+					<span class="w-px flex-1 bg-gray-900/10"></span>
+					<span class="w3-hide-large w3-hide-medium w3-hide-small">5499</span>
+				  </time>
+				</div>
+			  
+				<div class="hidden sm:block sm:basis-40">
+				  <img
+					alt=""
+					src="https://i.postimg.cc/bwzC2Gfp/08-emmanuel-phone-woman-motion.gif"
+					class="aspect-square h-full w-full object-cover"
+				  />
+				</div>
+			  
+				<div class="flex flex-1 flex-col justify-between">
+				  <div class="border-s border-gray-900/10 p-4 sm:border-l-transparent sm:p-6">
+					<span class="text-sm text-red-500">₹ 5499</span>
+					<a href="#">
+					  <h3 class="font-bold uppercase text-gray-900">
+						Student
+					  </h3>
+					</a>
+			  
+					<p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-700">
+						Hostel, PG, flats, apartments, and co-living spaces.
+					</p>
+				  </div>
+			  
+		
+				</div>
+			  </article>
+		</div>
+	  </div>
+
+</div>
+
+
+<br><br>
+  </div>
+
+
+  <!--smallscreent-->
+
+  <div class="bg-white  w3-hide-large w3-hide-medium py-4">
+	<div class="mx-auto max-w-7xl px-6 lg:px-8">
+	  <div class="mx-auto max-w-2xl lg:text-center ">
+	
+		<p class="mt-2 text-2xl font-bold tracking-tight text-gray-900 sm:text-l">We streamline lodging options for various needs, including:</p>
+		<p class="mt-1.5 text-sm text-gray-500">Book accommodations for bachelors, office employees, and students near universities and offices</p>
+	
+	<!--grid-->
+	
+	
+	</div>
+
+
+	<div class="w3-display-container">
+     <!-- Page content -->
+<div class="w3-content" style="max-width:2000px;margin-top:46px">
+
+	<!-- Automatic Slideshow Images -->
+	<div class="mySlides w3-display-container w3-center">
+	    <article class="flex bg-white transition hover:shadow-xl">
+			<div class="rotate-180 p-2 [writing-mode:_vertical-lr]">
+			  <time
+				datetime="2022-10-10"
+				class="flex items-center justify-between gap-4 text-xs font-bold uppercase text-gray-900"
+			  >
+				<span>Start At</span>
+				<span class="w-px flex-1 bg-gray-900/10"></span>
+				<span class="w3-hide-large w3-hide-medium w3-hide-small">₹6000</span>
+			  </time>
+			</div>
+		  
+			<div class="basis-40">
+			  <img
+				alt=""
+				src="https://i.postimg.cc/NjkRwLW2/tumblr-2f1ddea71e3e5dc5afeb8918d18e00d6-9f8f4cb0-1280.gif"
+				class="aspect-square h-full w-full object-cover"
+			  />
+			</div>
+		  
+			<div class="flex flex-1 flex-col justify-between">
+			  <div class="border-s border-gray-900/10 p-4 sm:border-l-transparent sm:p-6">
+				<span class="text-sm text-red-500">₹ 6000</span>
+				<a href="#">
+				  <h3 class="font-bold uppercase text-gray-900">
+					Family
+				  </h3>
+				</a>
+		  
+				<p class="mb-2 mt-2 line-clamp-3 text-sm text-gray-700">
+					1RK, 1BHK, 2BHK, 3BHK, villas, flats, and apartments.
+				</p>
+			  </div>
+		  
+	
+			</div>
+		  </article>
+	  </div>
+	</div>
+	<div class="mySlides w3-display-container w3-center">
+		<article class="flex bg-white transition hover:shadow-xl">
+			<div class="rotate-180 p-2 [writing-mode:_vertical-lr]">
+			  <time
+				datetime="2022-10-10"
+				class="flex items-center justify-between gap-4 text-xs font-bold uppercase text-gray-900"
+			  >
+				<span>Start At</span>
+				<span class="w-px flex-1 bg-gray-900/10"></span>
+				<span class="w3-hide-large w3-hide-medium w3-hide-small">5499</span>
+			  </time>
+			</div>
+		  
+			<div class="basis-40">
+			  <img
+				alt=""
+				src="https://i.postimg.cc/26XbTZgh/7df26fa959d20fa16bf8223205cd949b.gif"
+				class="aspect-square h-full w-full object-cover"
+			  />
+			</div>
+		  
+			<div class="flex flex-1 flex-col justify-between">
+			  <div class="border-s border-gray-900/10 p-4 sm:border-l-transparent sm:p-6">
+				<span class="text-sm text-red-500">₹ 5499</span>
+				<a href="#">
+				  <h3 class="font-bold uppercase text-gray-900">
+					Bachelor , Office Employee
+				  </h3>
+				</a>
+		  
+				<p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-700">
+					PG, hostel, 1RK, 1BHK, 2BHK, 3BHK, villas, flats, and co-living spaces. 
+				</p>
+			  </div>
+		  
+	
+			</div>
+		  </article>
+	</div>
+	<div class="mySlides w3-display-container w3-center">
+		<article class="flex bg-white transition hover:shadow-xl">
+			<div class="rotate-180 p-2 [writing-mode:_vertical-lr]">
+			  <time
+				datetime="2022-10-10"
+				class="flex items-center justify-between gap-4 text-xs font-bold uppercase text-gray-900"
+			  >
+				<span>start at</span>
+				<span class="w-px flex-1 bg-gray-900/10"></span>
+				<span class="w3-hide-large w3-hide-medium w3-hide-small">5499</span>
+			  </time>
+			</div>
+		  
+			<div class="basis-40">
+			  <img
+				alt=""
+				src="https://i.postimg.cc/bwzC2Gfp/08-emmanuel-phone-woman-motion.gif"
+				class="aspect-square h-full w-full object-cover"
+			  />
+			</div>
+		  
+			<div class="flex flex-1 flex-col justify-between">
+			  <div class="border-s border-gray-900/10 p-4 sm:border-l-transparent sm:p-6">
+				<span class="text-sm text-red-500">₹ 5499</span>
+				<a href="#">
+				  <h3 class="font-bold uppercase text-gray-900">
+					Student
+				  </h3>
+				</a>
+		  
+				<p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-700">
+					Hostel, PG, flats, apartments, and co-living spaces.
+				</p>
+			  </div>
+		  
+	
+			</div>
+		  </article>
+	</div>
+	</div>
+
+
+</div>
+  </div>
+
+
+
+
+
+<br>
+<!--END THIS HERE-->   
+  <section class="bg-white">
+    <header>
+        <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+            <div class="sm:flex sm:items-center sm:justify-between">
+                <div class="text-center sm:text-left">
+                    <h1 class="text-2xl font-bold text-gray-900 sm:text-3xl">How it works!</h1>
+                    <p class="mt-1.5 text-sm text-gray-500">A Seamless Real Estate Experience 🎉</p>
+                </div>
+                </div>
+        </div>
+    </header>
+
+    <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+
+            <div class="relative block h-full overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8">
+                <span class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
+
+                <div class="sm:flex sm:justify-between sm:gap-4">
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-900 sm:text-xl">
+                            Owner Lists Their Property:
+                        </h3>
+                    </div>
+                    </div>
+
+                <div class="mt-4 space-y-2">
+                    <p class="text-sm text-gray-500">
+                        Property owners go to firstspace.in
+                    </p>
+                    <p class="text-sm text-gray-500">
+                        They provide details about their property, such as location, size, amenities, and other relevant information.
+                    </p>
+                </div>
+                 </div>
+
+            <div class="relative block h-full overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8">
+                <span class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
+
+                <div class="sm:flex sm:justify-between sm:gap-4">
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-900 sm:text-xl">
+                            Property Inspection
+                        </h3>
+                    </div>
+                    </div>
+
+                <div class="mt-4">
+                    <p class="text-sm text-gray-500">
+                        Our experienced team conducts on-site inspections of every listed property to ensure it meets our quality standards.
+                    </p>
+                </div>
+                 </div>
+
+            <div class="relative block h-full overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8">
+                <span class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
+
+                <div class="sm:flex sm:justify-between sm:gap-4">
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-900 sm:text-xl">
+                            Listing on Marketplace:
+                        </h3>
+                    </div>
+                    </div>
+
+                <div class="mt-4">
+                    <p class="text-sm text-gray-500">
+                        After the verification process is completed, the property is officially listed on the firstspace.in marketplace.
+                    </p>
+                </div>
+                 </div>
+
+        </div> </div> </section>
+
+
+   <!--
+	Heads up! 👋
+  
+	This component comes with some `rtl` classes. Please remove them if they are not needed in your project.
+  -->
+  
+  <section class="pt-12 w3-hide-small">
+	<div class="max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+	  <div class="grid grid-cols-1 gap-y-8 lg:grid-cols-2 lg:items-center lg:gap-x-16">
+		<div class="mx-auto max-w-lg  lg:mx-0 ltr:lg:text-left rtl:lg:text-right">
+		  <h4 class="text-3xl  text-indigo-600 font-bold sm:text-xl">Coming Soon in NOIDA</h4>
+		  <h2 class="text-3xl font-bold sm:text-4xl">Discover Comprehensive Property Management Solutions</h2>
+  
+		  <p class="mt-4 text-sm text-gray-600">
+			Get ready for a new era in property management excellence! firstspace.in is gearing up to launch in Noida, bringing unparalleled end-to-end property management services. Stay tuned for swift rental management solutions and tailored services designed to elevate your property experience.
+  
+			Your trusted partner in Noida - firstspace.in, where efficiency meets excellence. Coming soon to redefine property management standards.
+		  </p>
+		</div>
+  
+		<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 w3-hide-small">
+		  <a
+			class="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+			href="/accountant"
+		  >
+			<span class="inline-block rounded-lg bg-gray-50 p-3">
+			  <svg
+				class="h-6 w-6"
+				fill="none"
+				stroke="currentColor"
+				viewBox="0 0 24 24"
+				xmlns="http://www.w3.org/2000/svg"
+			  >
+				<path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+				<path
+				  d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+				></path>
+				<path
+				  stroke-linecap="round"
+				  stroke-linejoin="round"
+				  stroke-width="2"
+				  d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+				></path>
+			  </svg>
+			</span>
+  
+			<h2 class="mt-2 font-bold">Background checks,</h2>
+  
+		  
+		  </a>
+  
+		  <a
+			class="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+			href="/accountant"
+		  >
+			<span class="inline-block rounded-lg bg-gray-50 p-3">
+			  <svg
+				class="h-6 w-6"
+				fill="none"
+				stroke="currentColor"
+				viewBox="0 0 24 24"
+				xmlns="http://www.w3.org/2000/svg"
+			  >
+				<path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+				<path
+				  d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+				></path>
+				<path
+				  stroke-linecap="round"
+				  stroke-linejoin="round"
+				  stroke-width="2"
+				  d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+				></path>
+			  </svg>
+			</span>
+  
+			<h2 class="mt-2 font-bold"> Police verifications</h2>
+  
+		   
+		  </a>
+  
+		  <a
+			class="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+			href="/accountant"
+		  >
+			<span class="inline-block rounded-lg bg-gray-50 p-3">
+			  <svg
+				class="h-6 w-6"
+				fill="none"
+				stroke="currentColor"
+				viewBox="0 0 24 24"
+				xmlns="http://www.w3.org/2000/svg"
+			  >
+				<path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+				<path
+				  d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+				></path>
+				<path
+				  stroke-linecap="round"
+				  stroke-linejoin="round"
+				  stroke-width="2"
+				  d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+				></path>
+			  </svg>
+			</span>
+  
+			<h2 class="mt-2 font-bold">Tenant search</h2>
+  
+	   
+		  </a>
+  
+		  <a
+			class="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+			href="/accountant"
+		  >
+			<span class="inline-block rounded-lg bg-gray-50 p-3">
+			  <svg
+				class="h-6 w-6"
+				fill="none"
+				stroke="currentColor"
+				viewBox="0 0 24 24"
+				xmlns="http://www.w3.org/2000/svg"
+			  >
+				<path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+				<path
+				  d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+				></path>
+				<path
+				  stroke-linecap="round"
+				  stroke-linejoin="round"
+				  stroke-width="2"
+				  d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+				></path>
+			  </svg>
+			</span>
+  
+			<h2 class="mt-2 font-bold">End-to-End Property Management
+			</h2>
+  
+		  </a>
+  
+		  <a
+			class="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+			href="/accountant"
+		  >
+			<span class="inline-block rounded-lg bg-gray-50 p-3">
+			  <svg
+				class="h-6 w-6"
+				fill="none"
+				stroke="currentColor"
+				viewBox="0 0 24 24"
+				xmlns="http://www.w3.org/2000/svg"
+			  >
+				<path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+				<path
+				  d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+				></path>
+				<path
+				  stroke-linecap="round"
+				  stroke-linejoin="round"
+				  stroke-width="2"
+				  d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+				></path>
+			  </svg>
+			</span>
+  
+			<h2 class="mt-2 font-bold">we deal in excellent ways to manage rentals.</h2>
+  
+		   
+		  </a>
+  
+		  <a
+			class="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+			href="/accountant"
+		  >
+			<span class="inline-block rounded-lg bg-gray-50 p-3">
+			  <svg
+				class="h-6 w-6"
+				fill="none"
+				stroke="currentColor"
+				viewBox="0 0 24 24"
+				xmlns="http://www.w3.org/2000/svg"
+			  >
+				<path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+				<path
+				  d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+				></path>
+				<path
+				  stroke-linecap="round"
+				  stroke-linejoin="round"
+				  stroke-width="2"
+				  d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+				></path>
+			  </svg>
+			</span>
+  
+			<h2 class="mt-2 font-bold">Rental Management</h2>
+  
+		  </a>
+		</div>
+
+		<!--small-->
+		<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 w3-hide-large w3-hide-medium">
+			<a
+			  class="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+			  href="/accountant"
+			>
+			  <span class="inline-block rounded-lg bg-gray-50 p-3">
+				<svg
+				  class="h-6 w-6"
+				  fill="none"
+				  stroke="currentColor"
+				  viewBox="0 0 24 24"
+				  xmlns="http://www.w3.org/2000/svg"
+				>
+				  <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+				  <path
+					d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+				  ></path>
+				  <path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+				  ></path>
+				</svg>
+			  </span>
+	
+			  <p class=" "><small>Background checks,</small></p>
+	
+			
+			</a>
+	
+			<a
+			  class="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+			  href="/accountant"
+			>
+			  <span class="inline-block rounded-lg bg-gray-50 p-3">
+				<svg
+				  class="h-6 w-6"
+				  fill="none"
+				  stroke="currentColor"
+				  viewBox="0 0 24 24"
+				  xmlns="http://www.w3.org/2000/svg"
+				>
+				  <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+				  <path
+					d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+				  ></path>
+				  <path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+				  ></path>
+				</svg>
+			  </span>
+	
+			  <p class=""><small> Police verifications</small></p>
+	
+			 
+			</a>
+	
+			<a
+			  class="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+			  href="/accountant"
+			>
+			  <span class="inline-block rounded-lg bg-gray-50 p-3">
+				<svg
+				  class="h-6 w-6"
+				  fill="none"
+				  stroke="currentColor"
+				  viewBox="0 0 24 24"
+				  xmlns="http://www.w3.org/2000/svg"
+				>
+				  <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+				  <path
+					d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+				  ></path>
+				  <path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+				  ></path>
+				</svg>
+			  </span>
+	
+			  <p class="mt-2 "><small>Tenant search</small></p>
+	
+		 
+			</a>
+	
+			<a
+			  class="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+			  href="/accountant"
+			>
+			  <span class="inline-block rounded-lg bg-gray-50 p-3">
+				<svg
+				  class="h-6 w-6"
+				  fill="none"
+				  stroke="currentColor"
+				  viewBox="0 0 24 24"
+				  xmlns="http://www.w3.org/2000/svg"
+				>
+				  <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+				  <path
+					d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+				  ></path>
+				  <path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+				  ></path>
+				</svg>
+			  </span>
+	
+			  <p class="mt-2 "><small>End-to-End Property Management</small></p>
+			  </h2>
+	
+			</a>
+	
+			<a
+			  class="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+			  href="/accountant"
+			>
+			  <span class="inline-block rounded-lg bg-gray-50 p-3">
+				<svg
+				  class="h-6 w-6"
+				  fill="none"
+				  stroke="currentColor"
+				  viewBox="0 0 24 24"
+				  xmlns="http://www.w3.org/2000/svg"
+				>
+				  <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+				  <path
+					d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+				  ></path>
+				  <path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+				  ></path>
+				</svg>
+			  </span>
+	
+			  <p class="mt-2 "><small>we deal in excellent ways to manage rentals.</small></p>
+	
+			 
+			</a>
+	
+			<a
+			  class="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+			  href="/accountant"
+			>
+			  <span class="inline-block rounded-lg bg-gray-50 p-3">
+				<svg
+				  class="h-6 w-6"
+				  fill="none"
+				  stroke="currentColor"
+				  viewBox="0 0 24 24"
+				  xmlns="http://www.w3.org/2000/svg"
+				>
+				  <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+				  <path
+					d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+				  ></path>
+				  <path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+				  ></path>
+				</svg>
+			  </span>
+	
+			  <p class="mt-2 "><small>Rental Management</small></p>
+	
+			</a>
+		  </div>
+	  </div>
+	</div>
+  </section>
+ 
+  
+
+  <!--small-->
+  <section class="pt-24 w3-hide-large w3-hide-medium">
+	<div class="max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+	  <div class="grid grid-cols-1 gap-y-8 lg:grid-cols-2 lg:items-center lg:gap-x-16">
+		<div class="mx-auto max-w-lg  lg:mx-0 ltr:lg:text-left rtl:lg:text-right">
+		  <h4 class="text-l  text-indigo-600 font-md sm:text-xl">Coming Soon in<b> NOIDA</b></h4>
+		  <h2 class="text-3xl font-bold sm:text-4xl">Discover Comprehensive Property Management Solutions</h2>
+  
+		  <p class="mt-4 text-sm text-gray-600">
+			Get ready for a new era in property management excellence! firstspace.in is gearing up to launch in Noida, bringing unparalleled end-to-end property management services. Stay tuned for swift rental management solutions and tailored services designed to elevate your property experience.
+  
+			Your trusted partner in Noida - firstspace.in, where efficiency meets excellence. Coming soon to redefine property management standards.
+		  </p>
+		</div>
+  
+		<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 w3-hide-small">
+		  <a
+			class="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+			href="/accountant"
+		  >
+			<span class="inline-block rounded-lg bg-gray-50 p-3">
+			  <svg
+				class="h-6 w-6"
+				fill="none"
+				stroke="currentColor"
+				viewBox="0 0 24 24"
+				xmlns="http://www.w3.org/2000/svg"
+			  >
+				<path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+				<path
+				  d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+				></path>
+				<path
+				  stroke-linecap="round"
+				  stroke-linejoin="round"
+				  stroke-width="2"
+				  d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+				></path>
+			  </svg>
+			</span>
+  
+			<h2 class="mt-2 font-bold">Background checks,</h2>
+  
+		  
+		  </a>
+  
+		  <a
+			class="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+			href="/accountant"
+		  >
+			<span class="inline-block rounded-lg bg-gray-50 p-3">
+			  <svg
+				class="h-6 w-6"
+				fill="none"
+				stroke="currentColor"
+				viewBox="0 0 24 24"
+				xmlns="http://www.w3.org/2000/svg"
+			  >
+				<path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+				<path
+				  d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+				></path>
+				<path
+				  stroke-linecap="round"
+				  stroke-linejoin="round"
+				  stroke-width="2"
+				  d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+				></path>
+			  </svg>
+			</span>
+  
+			<h2 class="mt-2 font-bold"> Police verifications</h2>
+  
+		   
+		  </a>
+  
+		  <a
+			class="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+			href="/accountant"
+		  >
+			<span class="inline-block rounded-lg bg-gray-50 p-3">
+			  <svg
+				class="h-6 w-6"
+				fill="none"
+				stroke="currentColor"
+				viewBox="0 0 24 24"
+				xmlns="http://www.w3.org/2000/svg"
+			  >
+				<path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+				<path
+				  d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+				></path>
+				<path
+				  stroke-linecap="round"
+				  stroke-linejoin="round"
+				  stroke-width="2"
+				  d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+				></path>
+			  </svg>
+			</span>
+  
+			<h2 class="mt-2 font-bold">Tenant search</h2>
+  
+	   
+		  </a>
+  
+		  <a
+			class="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+			href="/accountant"
+		  >
+			<span class="inline-block rounded-lg bg-gray-50 p-3">
+			  <svg
+				class="h-6 w-6"
+				fill="none"
+				stroke="currentColor"
+				viewBox="0 0 24 24"
+				xmlns="http://www.w3.org/2000/svg"
+			  >
+				<path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+				<path
+				  d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+				></path>
+				<path
+				  stroke-linecap="round"
+				  stroke-linejoin="round"
+				  stroke-width="2"
+				  d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+				></path>
+			  </svg>
+			</span>
+  
+			<h2 class="mt-2 font-bold">End-to-End Property Management
+			</h2>
+  
+		  </a>
+  
+		  <a
+			class="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+			href="/accountant"
+		  >
+			<span class="inline-block rounded-lg bg-gray-50 p-3">
+			  <svg
+				class="h-6 w-6"
+				fill="none"
+				stroke="currentColor"
+				viewBox="0 0 24 24"
+				xmlns="http://www.w3.org/2000/svg"
+			  >
+				<path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+				<path
+				  d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+				></path>
+				<path
+				  stroke-linecap="round"
+				  stroke-linejoin="round"
+				  stroke-width="2"
+				  d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+				></path>
+			  </svg>
+			</span>
+  
+			<h2 class="mt-2 font-bold">we deal in excellent ways to manage rentals.</h2>
+  
+		   
+		  </a>
+  
+		  <a
+			class="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+			href="/accountant"
+		  >
+			<span class="inline-block rounded-lg bg-gray-50 p-3">
+			  <svg
+				class="h-6 w-6"
+				fill="none"
+				stroke="currentColor"
+				viewBox="0 0 24 24"
+				xmlns="http://www.w3.org/2000/svg"
+			  >
+				<path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+				<path
+				  d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+				></path>
+				<path
+				  stroke-linecap="round"
+				  stroke-linejoin="round"
+				  stroke-width="2"
+				  d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+				></path>
+			  </svg>
+			</span>
+  
+			<h2 class="mt-2 font-bold">Rental Management</h2>
+  
+		  </a>
+		</div>
+
+		<!--small-->
+		<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 w3-hide-large w3-hide-medium">
+			<a
+			  class="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+			  href="/accountant"
+			>
+			  <span class="inline-block rounded-lg bg-gray-50 p-3">
+				<svg
+				  class="h-6 w-6"
+				  fill="none"
+				  stroke="currentColor"
+				  viewBox="0 0 24 24"
+				  xmlns="http://www.w3.org/2000/svg"
+				>
+				  <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+				  <path
+					d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+				  ></path>
+				  <path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+				  ></path>
+				</svg>
+			  </span>
+	
+			  <p class=" "><small>Background checks,</small></p>
+	
+			
+			</a>
+	
+			<a
+			  class="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+			  href="/accountant"
+			>
+			  <span class="inline-block rounded-lg bg-gray-50 p-3">
+				<svg
+				  class="h-6 w-6"
+				  fill="none"
+				  stroke="currentColor"
+				  viewBox="0 0 24 24"
+				  xmlns="http://www.w3.org/2000/svg"
+				>
+				  <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+				  <path
+					d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+				  ></path>
+				  <path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+				  ></path>
+				</svg>
+			  </span>
+	
+			  <p class=""><small> Police verifications</small></p>
+	
+			 
+			</a>
+	
+			<a
+			  class="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+			  href="/accountant"
+			>
+			  <span class="inline-block rounded-lg bg-gray-50 p-3">
+				<svg
+				  class="h-6 w-6"
+				  fill="none"
+				  stroke="currentColor"
+				  viewBox="0 0 24 24"
+				  xmlns="http://www.w3.org/2000/svg"
+				>
+				  <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+				  <path
+					d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+				  ></path>
+				  <path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+				  ></path>
+				</svg>
+			  </span>
+	
+			  <p class="mt-2 "><small>Tenant search</small></p>
+	
+		 
+			</a>
+	
+			<a
+			  class="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+			  href="/accountant"
+			>
+			  <span class="inline-block rounded-lg bg-gray-50 p-3">
+				<svg
+				  class="h-6 w-6"
+				  fill="none"
+				  stroke="currentColor"
+				  viewBox="0 0 24 24"
+				  xmlns="http://www.w3.org/2000/svg"
+				>
+				  <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+				  <path
+					d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+				  ></path>
+				  <path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+				  ></path>
+				</svg>
+			  </span>
+	
+			  <p class="mt-2 "><small>End-to-End Property Management</small></p>
+			  </h2>
+	
+			</a>
+	
+			<a
+			  class="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+			  href="/accountant"
+			>
+			  <span class="inline-block rounded-lg bg-gray-50 p-3">
+				<svg
+				  class="h-6 w-6"
+				  fill="none"
+				  stroke="currentColor"
+				  viewBox="0 0 24 24"
+				  xmlns="http://www.w3.org/2000/svg"
+				>
+				  <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+				  <path
+					d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+				  ></path>
+				  <path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+				  ></path>
+				</svg>
+			  </span>
+	
+			  <p class="mt-2 "><small>we deal in excellent ways to manage rentals.</small></p>
+	
+			 
+			</a>
+	
+			<a
+			  class="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+			  href="/accountant"
+			>
+			  <span class="inline-block rounded-lg bg-gray-50 p-3">
+				<svg
+				  class="h-6 w-6"
+				  fill="none"
+				  stroke="currentColor"
+				  viewBox="0 0 24 24"
+				  xmlns="http://www.w3.org/2000/svg"
+				>
+				  <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+				  <path
+					d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+				  ></path>
+				  <path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+				  ></path>
+				</svg>
+			  </span>
+	
+			  <p class="mt-2 "><small>Rental Management</small></p>
+	
+			</a>
+		  </div>
+	  </div>
+	</div>
+  </section>
+
+
+
+  <!--gohardware.in-->
+
+  <div class="bg-white rounded-xl">
+	<div class="mx-auto max-w-7xl px-6 lg:px-8">
+
+
+  <section class="bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 ... text-white rounded-xl">
+	<div class="mx-auto max-w-screen-xl px-4 py-12 lg:items-center">
+	  <div class="mx-auto max-w-3xl text-center">
+		<h1
+		  class="text-white sm:text-5xl"
+		>
+		Purchase construction materials online and hire construction workers.
+  
+
+		</h1>
+  
+		<p class="mx-auto mt-4 max-w-xl sm:text-md/relaxed">
+			Gohardware.in, the sister website of firstspace.in, offers home services for delivering construction materials and providing construction workers directly to your doorstep.
+		</p>
+  
+		<div class="mt-8 flex flex-wrap justify-center gap-4">
+		  <a
+			class="block w-full rounded border border-blue-600 bg-white px-12 py-3 text-sm font-medium text-indigo-600 hover:bg-transparent hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto"
+			href="https://gohardware.in/"
+		  >
+			<b>Gohardwrare.in</b>
+		  </a>
+		</div>
+	  </div>
+	</div>
+  </section>
+
+
+  <!--why us-->
+  <div class="w3-hide-small">
+  <header>
+	<div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+	  <div class="sm:flex sm:items-center sm:justify-between">
+		<div class=" sm:text-left">
+		  <h1 class="text-2xl font-bold text-gray-900 sm:text-3xl">why us</h1>
+  
+		  <p class="mt-1.5 text-sm text-gray-500">A Seamless Real Estate Experience 🎉</p>
+		</div>
+  	   
+  
+	
+	  </div>
+	</div>
+  </header>
+
+  <div class="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8pt-10">
+	<div class="h-32 rounded-lg bg-gray-200">
+		<article class="rounded-xl border border-purple-700 bg-purple-800 p-3">
+			<div class="flex items-center gap-4">
+		
+		  
+			  <div>
+				<h3 class="text-lg font-medium text-white">Comprehensive Listings:</h3>
+		  
+				
+			  </div>
+			</div>
+		  
+			<ul class="mt-4 space-y-2">
+			  <li>
+				<a href="#" class="block h-full rounded-lg hover:border-pink-600">
+		
+				  <p class="mt-1 text-xs font-medium text-gray-300">
+					Discover a wide array of properties, from comfortable PG accommodations to rental and for-sale homes. Our platform ensures an extensive range of options, allowing you to find the perfect property that aligns with your preferences and budget.
+				  </p>
+				  <br>
+				  <br>
+				  
+				</a>
+				
+			  </li>
+		  
+		
+			</ul>
+		  </article>
+	</div>
+
+
+	<div class="h-32 rounded-lg bg-gray-200">
+		<article class="rounded-xl border border-pink-700 bg-pink-800 p-3">
+			<div class="flex items-center gap-4">
+		
+		  
+			  <div>
+				<h3 class="text-lg font-medium text-white">User-Friendly Interface:</h3>
+		  
+				
+			  </div>
+			</div>
+		  
+			<ul class="mt-4 space-y-2">
+			  <li>
+				<a href="#" class="block h-full rounded-lg hover:border-pink-600">
+		
+				  <p class="mt-1 text-xs font-medium text-gray-300">
+					Navigating the world of real estate has never been easier. Our user-friendly website provides an intuitive interface, enabling you to effortlessly explore listings, filter options, and access essential details. Save time and make informed decisions with our streamlined design  </p>
+				  <br>
+				  <br>
+				  
+				</a>
+			  </li>
+			</ul>
+		  </article>
+	</div>
+	<div class="h-32 rounded-lg bg-gray-200">
+		<article class="rounded-xl border border-indigo-700 bg-indigo-800 p-3">
+			<div class="flex items-center gap-4">
+		
+		  
+			  <div>
+				<h3 class="text-lg font-medium text-white">Secure Transactions and Expert Guidance:</h3>
+		  
+				
+			  </div>
+			</div>
+		  
+			<ul class="mt-4 space-y-2">
+			  <li>
+				<a href="#" class="block h-full rounded-lg  hover:border-pink-600">
+		
+				  <p class="mt-1 text-xs font-medium text-gray-300">
+					Trust is at the core of our platform. Benefit from secure transactions and connect with experienced real estate agents who can guide you through the process. Whether you're renting or buying, we prioritize your safety and provide a transparent experience. Your real estate journey begins here! </p>
+				  <br>
+				  <br>
+				  
+				</a>
+				
+			  </li>
+		  
+		
+			</ul>
+		  </article>
+	</div>
+  </div>
+</div>
+<!--smallscreen-->
+ <!--why us-->
+ <div class="w3-hide-large w3-hide-medium">
+	<header>
+	  <div class="mx-auto max-w-screen-xl  py-6 sm:px-6 sm:py-8 lg:px-8">
+		<div class="sm:flex sm:items-center sm:justify-between">
+		  <div class=" sm:text-left">
+			<h1 class="text-2xl font-bold text-gray-900 sm:text-3xl">why us</h1>
+	
+			<p class="mt-1.5 text-sm text-gray-500">A Seamless Real Estate Experience 🎉</p>
+		  </div>
+		   
+	
+	  
+		</div>
+	  </div>
+	</header>
+  
+	<div class="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8pt-10">
+	  <div class="h-32 rounded-lg pt-3">
+		  <article class="rounded-xl border border-purple-700 bg-purple-800 p-3">
+			  <div class="flex items-center gap-4">
+		  
+			
+				<div>
+				  <h3 class="text-lg font-medium text-white">Comprehensive Listings:</h3>
+			
+				  
+				</div>
+			  </div>
+			
+			  <ul class="mt-4 space-y-2">
+				<li>
+				  <a href="#" class="block h-full rounded-lg hover:border-pink-600">
+		  
+					<p class="mt-1 text-xs font-medium text-gray-300">
+					  Discover a wide array of properties, from comfortable PG accommodations to rental and for-sale homes. Our platform ensures an extensive range of options, allowing you to find the perfect property that aligns with your preferences and budget.
+					</p>
+					<br>
+					<br>
+					
+				  </a>
+				  
+				</li>
+			
+		  
+			  </ul>
+			</article>
+	  </div>
+  <br>
+  <br>
+	  <div class="h-32 rounded-lg pt-3">
+		  <article class="rounded-xl border border-pink-700 bg-pink-800 p-3">
+			  <div class="flex items-center gap-4">
+		  
+			
+				<div>
+				  <h3 class="text-lg font-medium text-white">User-Friendly Interface:</h3>
+			
+				  
+				</div>
+			  </div>
+			
+			  <ul class="mt-4 space-y-2">
+				<li>
+				  <a href="#" class="block h-full rounded-lg hover:border-pink-600">
+		  
+					<p class="mt-1 text-xs font-medium text-gray-300">
+					  Navigating the world of real estate has never been easier. Our user-friendly website provides an intuitive interface, enabling you to effortlessly explore listings, filter options, and access essential details. Save time and make informed decisions with our streamlined design  </p>
+					<br>
+					<br>
+					
+				  </a>
+				</li>
+			  </ul>
+			</article>
+	  </div>
+
+	  <br>
+	  <br>
+	  <div class="h-32 rounded-lg  pt-3">
+		  <article class="rounded-xl border border-indigo-700 bg-indigo-800 p-3">
+			  <div class="flex items-center gap-4">
+		  
+			
+				<div>
+				  <h3 class="text-lg font-medium text-white">Secure Transactions and Expert Guidance:</h3>
+			
+				  
+				</div>
+			  </div>
+			
+			  <ul class="mt-4 space-y-2">
+				<li>
+				  <a href="#" class="block h-full rounded-lg  hover:border-pink-600">
+		  
+					<p class="mt-1 text-xs font-medium text-gray-300">
+					  Trust is at the core of our platform. Benefit from secure transactions and connect with experienced real estate agents who can guide you through the process. Whether you're renting or buying, we prioritize your safety and provide a transparent experience. Your real estate journey begins here! </p>
+					<br>
+					<br>
+					
+				  </a>
+				  
+				</li>
+			
+		  
+			  </ul>
+			</article>
+	  </div>
+	  <br>
+	  <br>
+	</div>
+  </div>
+
+</div>
+</div>
+
+
+
+
+<br><br><br>
+<script>
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+
+// Toggle between showing and hiding the sidebar when clicking the menu icon
+var mySidebar = document.getElementById("mySidebar");
+
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+  } else {
+    mySidebar.style.display = 'block';
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+    mySidebar.style.display = "none";
+}
+// Automatic Slideshow - change image every 4 seconds
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}    
+  x[myIndex-1].style.display = "block";  
+  setTimeout(carousel, 5000);    
+}
+
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+
+// When the user clicks anywhere outside of the modal, close it
+var modal = document.getElementById('ticketModal');
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+	
+  {% endblock content %}

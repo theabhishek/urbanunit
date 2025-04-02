@@ -1,0 +1,177 @@
+{% load static %}
+
+
+
+
+
+
+
+
+
+<div class="w3-top mt-2 mp-2">
+	<div class="w3-bar  " id="myNavbar">
+		<a href="#home" class="w3-bar-item ">
+			<img src="https://iili.io/3Ac1XI9.md.png" class="h-12" alt="Flowbite Logo" />
+       
+		</a>
+	    <!-- Right-sided navbar links -->
+	  <div class="w3-right w3-hide-small">
+		{% if user.is_authenticated %}
+		<a href="javascript:{document.getElementById('logout').submit()}" class="inline-block rounded border border-indigo-600 bg-indigo-600 px-8 py-2 text-sm font-medium text-white focus:outline-none focus:ring active:text-indigo-500">
+			Logout
+		</a>
+		<form action="{% url 'logout' %}" method="POST" id="logout">
+			{% csrf_token %}
+			<input type="hidden" name="">
+		</form>
+	{% else %}
+		{% if "register" in request.path %}
+							
+						{% else  %}
+							
+						{% endif %}
+		<a href="{% url 'register' %}" class="inline-block rounded border border-indigo-600 bg-indigo-600 px-8 py-2 text-sm font-medium text-white  focus:outline-none focus:ring active:text-indigo-500"> register</a>
+		{% if "login" in request.path %}
+
+	{% else  %}
+	
+	{% endif %}
+	
+		<a href="{% url 'login' %}" class="inline-block rounded border border-indigo-600 bg-indigo-600 px-6 py-2 text-sm font-medium text-white  focus:outline-none focus:ring active:text-indigo-500">login</a>
+		{% endif %}
+	  </div>
+	  <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+  
+	  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+		<i class="fa fa-bars"></i>
+	  </a>
+	</div>
+  </div>
+  
+  <!-- Sidebar on small screens when clicking the menu icon -->
+  <nav class="w3-sidebar w3-bar-block w3- w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+	<a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button  w3-padding-16"><b>Close ×</b></a>
+	<div class="w3-container w3-hide-large w3-hide-medium">
+		{% if user.is_authenticated %}
+		<a href="javascript:{document.getElementById('logout').submit()}" class="inline-block rounded border border-indigo-700 bg-indigo-600 px-8 py-2 text-sm font-medium text-white focus:outline-none focus:ring active:text-indigo-500">
+			Logout
+		</a>
+		<form action="{% url 'logout' %}" method="POST" id="logout">
+			{% csrf_token %}
+			<input type="hidden" name="">
+		</form>
+	{% else %}
+		{% if "register" in request.path %}
+							
+						{% else  %}
+							
+						{% endif %}
+		<a href="{% url 'register' %}" class="mt-2 inline-block rounded border border-indigo-600 bg-indigo-700 px-6 py-2 text-sm font-medium text-white  focus:outline-none focus:ring active:text-indigo-500"> register</a>
+		<br>
+		{% if "login" in request.path %}
+
+	{% else  %}
+	
+	{% endif %}
+	
+		<a href="{% url 'login' %}" class=" mt-2 inline-block rounded border border-indigo-600 bg-indigo-600 px-6 py-2 text-sm font-medium text-white  focus:outline-none focus:ring active:text-indigo-500">login</a>
+		{% endif %}
+	  </div>
+  </nav>
+<br><br>
+
+
+
+
+
+
+
+
+<!-- Navbar
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+	<div class="container">
+		<a class="navbar-brand" href="{% url 'index' %}">
+			<img src="{% static 'img/logo.png' %}" class="logo" alt="">
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+		<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<ul class="navbar-nav">
+				<li
+					{% if "/" == request.path %}
+						class="nav-item active mr-3"
+					{% else  %}
+						class="nav-item mr-3"
+					{% endif %}
+					>
+					<a class="nav-link" href="{% url 'index' %}">Home</a>
+				</li>
+				<li
+					{% if "about" in request.path %}
+						class="nav-item active mr-3"
+					{% else  %}
+						class="nav-item mr-3"
+					{% endif %}
+					>
+					<a class="nav-link" href="{% url 'about' %}">About</a>
+				</li>
+				<li
+					{% if "listings" in request.path %}
+						class="nav-item active mr-3"
+					{% else  %}
+						class="nav-item mr-3"
+					{% endif %}
+					>
+					<a class="nav-link" href="{% url 'listings' %}">Our Listings</a>
+				</li>
+			</ul>
+			<ul class="navbar-nav ml-auto">
+				{% if user.is_authenticated %}
+					<li
+						{% if "dashboard" in request.path %}
+							class="nav-item active mr-3"
+						{% else  %}
+							class="nav-item mr-3"
+						{% endif %}
+						>
+						<a class="nav-link" href="{% url 'dashboard' %}">
+							Welcome {{ user.username }}
+						</a>
+					</li>
+					<li class="nav-item mr-3">
+						<a href="javascript:{document.getElementById('logout').submit()}" class="nav-link">
+							Logout
+						</a>
+						<form action="{% url 'logout' %}" method="POST" id="logout">
+							{% csrf_token %}
+							<input type="hidden" name="">
+						</form>
+					</li>
+				{% else %}
+					<li
+						{% if "register" in request.path %}
+							class="nav-item active mr-3"
+						{% else  %}
+							class="nav-item mr-3"
+						{% endif %}
+						>
+						<a class="nav-link" href="{% url 'register' %}">
+						Register</a>
+					</li>
+					<li
+						{% if "login" in request.path %}
+							class="nav-item active mr-3"
+						{% else  %}
+							class="nav-item mr-3"
+						{% endif %}
+						>
+						<a class="nav-link" href="{% url 'login' %}">
+						Login</a>
+					</li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+</nav>
+ -->
